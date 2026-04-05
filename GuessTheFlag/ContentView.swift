@@ -10,13 +10,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            LinearGradient(
-                stops: [
-                    .init(color: .pink, location: 0.2),
-                    .init(color: .purple, location: 0.6),
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
+            RadialGradient(
+                colors: [.pink, .purple],
+                center: .center,
+                startRadius: 20,
+                endRadius: 500
             )
 
             Text("Your content")
