@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAlert = false
+
     var body: some View {
         VStack {
             Button("Cancel", role: .cancel) {}
@@ -55,9 +57,17 @@ struct ContentView: View {
             Button("Edit", systemImage: "pencil") {}
                 .buttonStyle(.bordered)
 
-            Button("Edit", systemImage: "pencil") {}
-                .buttonStyle(.borderedProminent)
-                .tint(.purple)
+            Button("Delete", systemImage: "trash.fill") {
+                showingAlert = true
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.purple)
+            .alert("Are you sure?", isPresented: $showingAlert) {
+                Button("Delete", role: .destructive) {}
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This action is not recoverable.")
+            }
 
             Button {
 
