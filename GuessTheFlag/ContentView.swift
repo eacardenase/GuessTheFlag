@@ -9,10 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Your content")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .foregroundStyle(.white)
-            .background(.red.gradient)
+        VStack {
+            Button("Cancel", role: .cancel) {}
+
+            Button("Delete", role: .destructive) {}
+
+            Button("Button 1") {}
+                .buttonStyle(.bordered)
+
+            Button("Button 2", role: .destructive) {}
+                .buttonStyle(.bordered)
+
+            Button("Button 3") {}
+                .buttonStyle(.borderedProminent)
+
+            Button("Button 4", role: .destructive) {}
+                .buttonStyle(.borderedProminent)
+
+            Button("Button 5") {}
+                .buttonStyle(.bordered)
+                .tint(.purple)
+
+            Button("Button 6") {}
+                .buttonStyle(.borderedProminent)
+                .tint(.purple)
+
+            Button {
+            } label: {
+                Text("Button 7")
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .foregroundStyle(.white)
+                    .background(.pink)
+                    .clipShape(.buttonBorder)
+            }
+
+        }
     }
 }
 
