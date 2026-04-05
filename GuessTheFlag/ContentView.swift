@@ -44,6 +44,31 @@ struct ContentView: View {
                     .clipShape(.buttonBorder)
             }
 
+            Button("", systemImage: "pencil") {}
+
+            Button {
+
+            } label: {
+                Image(systemName: "pencil")
+            }
+
+            Button("Edit", systemImage: "pencil") {}
+                .buttonStyle(.bordered)
+
+            Button("Edit", systemImage: "pencil") {}
+                .buttonStyle(.borderedProminent)
+                .tint(.purple)
+
+            Button {
+
+            } label: {
+                Label("Edit", systemImage: "pencil")
+                    .padding(.horizontal, 11)
+                    .padding(.vertical, 7)
+                    .foregroundStyle(.white)
+                    .background(.purple)
+                    .clipShape(.buttonBorder)
+            }
         }
     }
 }
