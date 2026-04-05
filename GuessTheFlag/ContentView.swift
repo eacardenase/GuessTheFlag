@@ -15,31 +15,14 @@ struct ContentView: View {
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
-            .ignoresSafeArea()
 
-            VStack(spacing: 10) {
-                HStack(spacing: 20) {
-                    Text("1")
-                    Text("2")
-                    Text("3")
-                }
-
-                HStack(spacing: 20) {
-                    Text("4")
-                    Text("5")
-                    Text("6")
-                }
-
-                HStack(spacing: 20) {
-                    Text("7")
-                    Text("8")
-                    Text("9")
-                }
-                .fontWeight(.light)
-            }
-            .foregroundStyle(.white)
-            .font(.system(size: 70, weight: .ultraLight))
+            Text("Your content")
+                .foregroundStyle(.secondary)
+                .padding(50)
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
         }
+        .ignoresSafeArea()
     }
 }
 
