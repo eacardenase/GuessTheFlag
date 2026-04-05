@@ -27,7 +27,9 @@ struct ContentView: View {
                 Text("8")
                 Text("9")
             }
+            .fontWeight(.light)
         }
+        .font(.system(size: 70, weight: .ultraLight))
     }
 }
 
