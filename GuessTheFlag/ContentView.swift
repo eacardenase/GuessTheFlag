@@ -30,11 +30,12 @@ struct ContentView: View {
             VStack(spacing: 30) {
                 VStack {
                     Text("Tag the flag of")
+                        .font(.subheadline.weight(.semibold))
 
                     Text(countries[correctAnswer])
+                        .font(.largeTitle.weight(.bold))
                         .italic()
                 }
-                .font(.largeTitle)
                 .foregroundStyle(.white)
 
                 ForEach(0..<3) { number in
@@ -42,7 +43,8 @@ struct ContentView: View {
                         flagTapped(number)
                     } label: {
                         Image(countries[number])
-                            .border(.black)
+                            .clipShape(.buttonBorder)
+                            .shadow(radius: 5)
                     }
                     .alert(scoreTitle, isPresented: $showingScore) {
                         Button("Play again!", action: askQuestion)
