@@ -15,6 +15,12 @@ struct ContentView: View {
             Button("Cancel", role: .cancel) {}
 
             Button("Delete", role: .destructive) {}
+                .alert("Are you sure?", isPresented: $showingAlert) {
+                    Button("Delete", role: .destructive) {}
+                    Button("Cancel", role: .cancel) {}
+                } message: {
+                    Text("This action is not recoverable.")
+                }
 
             Button("Button 1") {}
                 .buttonStyle(.bordered)
@@ -62,12 +68,6 @@ struct ContentView: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(.purple)
-            .alert("Are you sure?", isPresented: $showingAlert) {
-                Button("Delete", role: .destructive) {}
-                Button("Cancel", role: .cancel) {}
-            } message: {
-                Text("This action is not recoverable.")
-            }
 
             Button {
 
