@@ -8,76 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showingAlert = false
+    var countries = [
+        "Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria",
+        "Poland", "Spain", "UK", "Ukraine", "US",
+    ]
+    var correctAnswer = Int.random(in: 0..<3)
 
     var body: some View {
-        VStack {
-            Button("Cancel", role: .cancel) {}
+        ZStack {
+            Color.blue
+                .ignoresSafeArea()
 
-            Button("Delete", role: .destructive) {}
-                .alert("Are you sure?", isPresented: $showingAlert) {
-                    Button("Delete", role: .destructive) {}
-                    Button("Cancel", role: .cancel) {}
-                } message: {
-                    Text("This action is not recoverable.")
+            VStack(spacing: 30) {
+                VStack {
+                    Text("Tag the flag of")
+
+                    Text(countries[correctAnswer])
+                        .italic()
                 }
+                .font(.largeTitle)
+                .foregroundStyle(.white)
 
-            Button("Button 1") {}
-                .buttonStyle(.bordered)
+                ForEach(0..<3) { number in
+                    let flagName = countries[number]
 
-            Button("Button 2", role: .destructive) {}
-                .buttonStyle(.bordered)
-
-            Button("Button 3") {}
-                .buttonStyle(.borderedProminent)
-
-            Button("Button 4", role: .destructive) {}
-                .buttonStyle(.borderedProminent)
-
-            Button("Button 5") {}
-                .buttonStyle(.bordered)
-                .tint(.purple)
-
-            Button("Button 6") {}
-                .buttonStyle(.borderedProminent)
-                .tint(.purple)
-
-            Button {
-            } label: {
-                Text("Button 7")
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
-                    .foregroundStyle(.white)
-                    .background(.pink)
-                    .clipShape(.buttonBorder)
-            }
-
-            Button("", systemImage: "pencil") {}
-
-            Button {
-
-            } label: {
-                Image(systemName: "pencil")
-            }
-
-            Button("Edit", systemImage: "pencil") {}
-                .buttonStyle(.bordered)
-
-            Button("Delete", systemImage: "trash.fill") {
-                showingAlert = true
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.purple)
-
-            Button {
-
-            } label: {
-                Label("Edit", systemImage: "pencil")
-                    .padding(.horizontal, 11)
-                    .padding(.vertical, 7)
-                    .foregroundStyle(.white)
-                    .background(.purple)
-                    .clipShape(.buttonBorder)
+                    Button {
+                        print(flagName)
+                    } label: {
+                        Image(flagName)
+                            .border(.black)
+                    }
+                }
             }
         }
     }
