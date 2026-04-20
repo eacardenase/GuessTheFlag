@@ -18,6 +18,7 @@ struct FlagImage: View {
 }
 
 struct ContentView: View {
+    @State private var selectedFlag = 99
     @State private var showingScore = false
     @State private var scoreTitle = ""
     @State private var score = 0
@@ -69,6 +70,17 @@ struct ContentView: View {
                         } label: {
                             FlagImage(flagName: countries[number])
                         }
+                        .rotation3DEffect(
+                            .degrees(selectedFlag == number ? 360 : 0),
+                            axis: (x: 0, y: 1, z: 0)
+                        )
+                        .animation(
+                            selectedFlag == number ? .default : nil,
+                            value: selectedFlag
+                        )
+                        .opacity(selectedFlag == number ? 1 : 0.6)
+                        .scaleEffect(selectedFlag == number ? 1 : 0.85)
+                        .animation(.default, value: selectedFlag)
                         .alert(scoreTitle, isPresented: $showingScore) {
                             Button("Play again!", action: askQuestion)
                         } message: {
@@ -96,6 +108,8 @@ struct ContentView: View {
     }
 
     func flagTapped(_ number: Int) {
+        selectedFlag = number
+
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
@@ -110,6 +124,7 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0..<3)
+        selectedFlag = 99
     }
 }
 
